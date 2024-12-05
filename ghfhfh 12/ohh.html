@@ -1,0 +1,60 @@
+<script>// 1. Увеличение элементов массива
+
+const originalArray = [1, 2, 3, 4, 5];
+const newArray = originalArray.map(item => (item + 10) * 3);
+console.log(newArray); 
+
+
+// 2. Вывод возраста по году рождения
+
+const birthYears = [1990, 1995, 2000, 2005];
+const currentYear = new Date().getFullYear();
+const ages = birthYears.map(year => currentYear - year);
+console.log(ages); 
+
+
+// 3. Фильтрация совершеннолетних
+
+const people = [
+  { name: "Иван", age: 15 },
+  { name: "Петр", age: 20 },
+  { name: "Мария", age: 18 },
+  { name: "Елена", age: 25 }
+];
+
+const adults = people.filter(person => person.age >= 18);
+console.log(adults);
+
+
+// 4. Проверка на право редактирования и вывод имени администратора
+
+const isAdmin = true; 
+const Anna = "Администратор";
+
+if (isAdmin) {
+  console.log(`Администратор ${Anna} имеет право редактировать сайт.`);
+} else {
+  console.log("У вас нет прав на редактирование сайта.");
+}
+
+
+// 5. Вычисление среднего балла студентов
+
+const studentGrades = [80, 90, 75, 85, 95];
+
+const avgGrade = studentGrades.reduce((sum, grade) => sum + grade, 0) / studentGrades.length;
+console.log("Средний балл:", avgGrade);
+
+
+// 6. Функция высшего порядка для создания массива из нулей и единиц
+
+function createZeroOneArray(arr) {
+  return arr.map(item => item.length <= 3 ? 0 : 1);
+}
+
+
+const strings = ["abc", "abcd", "a", "xyz", "abcdef"];
+const zeroOneArr = createZeroOneArray(strings);
+console.log(zeroOneArr);
+
+</script>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мемные котики - О нас</title>
+    <link rel="stylesheet" href="main.css">
+</head>    
+<body class="page">
+    <header class="header">
+        <div class="header__logo">
+            <img src="images/лого.jpg" alt="Логотип" class="header__logo-img">
+        </div>
+        <nav class="header__nav">
+            <ul>
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Новые мемы</a></li>
+              <li><a href="#">Топ мемы</a></li>
+              <li><a href="#">О сайте</a></li>
+            </ul>
+          </nav>
+          <div class="header__search">
+            <input type="text" placeholder="Поиск мемов...">
+            <button>Искать</button>
+          </div>
+          <button id="registerButton">Регистрация</button>  
+          <div id="registerForm" class="register-form" style="display: none;"> 
+            <h2>Регистрация</h2>
+            <form>
+              <input type="text" placeholder="Имя">
+              <input type="email" placeholder="Email">
+              <input type="password" placeholder="Пароль">
+              <button type="submit">Зарегистрироваться</button>
+            </form>
+          </div>
+    </header>
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link">Главная</a></li>
+            <li class="nav__item"><a href="gallery.html" class="nav__link">Галерея</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link nav__link--active">О нас</a></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <aside class="sidebar sidebar--left">
+            <div class="sidebar__content">
+                <h3 class="sidebar__title">Навигация</h3>
+                <ul class="sidebar__nav">
+                    <li><a href="#about">О проекте</a></li>
+                    <li><a href="#team">Наша команда</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                    <li><a href="#rules">Правила</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content">
+            <div class="about">
+                <section id="about" class="about__section">
+                    <h2 class="about__title">О проекте</h2>
+                    <div class="about__content">
+                        <p>Мы создаем и собираем самые смешные мемы с котиками со всего интернета!</p>
+                        <p>Наша миссия - делать ваш день чуточку лучше с помощью забавных пушистиков.</p>
+                    </div>
+                </section>
+
+                <section id="team" class="about__section">
+                    <h2 class="about__title">Наша команда</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="images/10.jpg" alt="Член команды 1" class="team-member__photo">
+                            <h3 class="team-member__name">Анна Котова</h3>
+                            <p class="team-member__role">Главный мемолог</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="images/11.jpg" alt="Член команды 2" class="team-member__photo">
+                            <h3 class="team-member__name">Марк Квадробов</h3>
+                            <p class="team-member__role">Котовед-эксперт</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="contact" class="about__section">
+                    <h2 class="about__title">Свяжитесь с нами</h2>
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Имя:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Отправить</button>
+                    </form>
+                </section>
+            </div>
+        </section>
+
+        <aside class="sidebar sidebar--right">
+            <div class="sidebar__content">
+                <h3 class="sidebar__title">Достижения</h3>
+                <div class="achievements">
+                    <div class="achievement">
+                        <span class="achievement__number">1000+</span>
+                        <span class="achievement__text">Мемов создано</span>
+                    </div>
+                    <div class="achievement">
+                        <span class="achievement__number">50K+</span>
+                        <span class="achievement__text">Счастливых пользователей</span>
+                    </div>
+                    <div class="achievement">
+                        <span class="achievement__number">5</span>
+                        <span class="achievement__text">Лет радуем котиками</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2024 Мемные котики. Все права защищены</p>
+        <div class="footer__social">
+            <a href="#" class="footer__social-link">VK</a>
+            <a href="#" class="footer__social-link">Telegram</a>
+        </div>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор и возраст</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        
+let userName = prompt("Введите ваше имя:");
+
+let birthYear = prompt("Введите год вашего рождения:");
+
+let currentYear = new Date().getFullYear();
+let age = currentYear - parseInt(birthYear);
+
+document.write(`${userName}: ${age}<br><br>`);
+
+let num1 = parseFloat(prompt("Введите первое число:"));
+let operation = prompt("Введите операцию (+, -, *, /):");
+let num2 = parseFloat(prompt("Введите второе число:"));
+
+let result;
+
+switch(operation) {
+    case '+':
+        result = num1 + num2;
+        break;
+    case '-':
+        result = num1 - num2;
+        break;
+    case '*':
+        result = num1 * num2;
+        break;
+    case '/':
+        result = num2 !== 0 ? num1 / num2 : "Деление на ноль невозможно";
+        break;
+    default:
+        result = "Неверная операция";
+}
+
+document.write(`Результат: ${num1} ${operation} ${num2} = ${result}`);
+    </script>
+</body>
+</html>

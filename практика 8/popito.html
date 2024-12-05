@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Программирование - Практические задания</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffe4e1;
+            color: #333;
+        }
+
+        .task-container {
+            background-color: #fff0f5;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid #ffb6c1;
+        }
+
+        h1 {
+            color: #ff69b4;
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #ff1493;
+            border-bottom: 2px solid #ffb6c1;
+            padding-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        button {
+            background-color: #ff69b4;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #ff1493;
+            transform: scale(1.05);
+        }
+
+        .output {
+            background-color: #fffaf0;
+            padding: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #ff69b4;
+        }
+
+        input[type="number"], input[type="text"] {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ffb6c1;
+            border-radius: 10px;
+            width: 200px;
+            font-size: 1em;
+        }
+
+        .result {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #ffe4e1;
+            border-radius: 10px;
+            border: 1px solid #ffb6c1;
+        }
+
+        .cute-icon {
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌸 ПРАКТИЧЕСКАЯ РАБОТА ПО ПРЕДМЕТУ 🌸</h1>
+
+    <div class="task-container">
+        <h2><span class="cute-icon">🧩</span>1. Загадки</h2>
+        <button onclick="zagadka1()">Начать отгадывать загадки</button>
+        <div id="zagadki-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2><span class="cute-icon">🔢</span>2. Счёт от 1 до 10</h2>
+        <button onclick="countToTen()">Показать счёт</button>
+        <div id="count-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2><span class="cute-icon">🍹</span>3. Ещё по одной?</h2>
+        <button onclick="eshePoOdnoy()">Начать программу</button>
+        <div id="eshe-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2><span class="cute-icon">🔢</span>4. Вычисление факториала</h2>
+        <input type="number" id="factorial-input" placeholder="Введите число">
+        <button onclick="calculateFactorial()">Вычислить факториал</button>
+        <div id="factorial-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2><span class="cute-icon">🔍</span>5. Проверка на палиндром</h2>
+        <input type="text" id="palindrome-input" placeholder="Введите текст">
+        <button onclick="checkPalindrome()">Проверить</button>
+        <div id="palindrome-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2><span class="cute-icon">🌟</span>6. Простые числа</h2>
+        <input type="number" id="prime-input" placeholder="Введите число">
+        <button onclick="findPrimes()">Найти простые числа</button>
+        <div id="prime-result" class="result"></div>
+    </div>
+
+    <script>
+        let otgadki = 0;
+
+        function zagadka1() {
+            let otvet1 = prompt("Загадка 1: Сколько будет 2-1? (Введите ответ цифрой)");
+            if (otvet1 === "1") {
+                otgadki++;
+                document.getElementById('zagadki-result').innerHTML = "Правильно! Переходим ко второй загадке.";
+                zagadka2();
+            } else {
+                document.getElementById('zagadki-result').innerHTML = "Неверно :( Попробуйте еще раз!";
+            }
+        }
+
+        function zagadka2() {
+            let otvet2 = prompt("Загадка 2: Сколько будет 1+1? (Введите ответ цифрой)");
+            if (otvet2 === "2") {
+                otgadki++;
+                document.getElementById('zagadki-result').innerHTML = "Поздравляем! Вы разгадали обе загадки за " + otgadki + " попыток!";
+            } else {
+                document.getElementById('zagadki-result').innerHTML = "Неверно :( Попробуйте еще раз!";
+            }
+        }
+
+        function countToTen() {
+            let result = "";
+            for (let i = 1; i <= 10; i++) {
+                result += i + " ";
+            }
+            document.getElementById('count-result').innerHTML = result;
+        }
+
+        function eshePoOdnoy() {
+            let esheOdna;
+            do {
+                esheOdna = prompt("Ещё по одной? (Введите 1, чтобы закончить)");
+            } while (esheOdna !== "1");
+            document.getElementById('eshe-result').innerHTML = "На сегодня хватит!";
+        }
+
+        function calculateFactorial() {
+            let n = parseInt(document.getElementById('factorial-input').value);
+            if (isNaN(n) || n < 0) {
+                document.getElementById('factorial-result').innerHTML = "Введите корректное положительное число.";
+                return;
+            }
+            let factorialResult = factorial(n);
+            document.getElementById('factorial-result').innerHTML = `Факториал числа ${n} равен: ${factorialResult}`;
+        }
+
+        function factorial(n) {
+            if (n === 0) {
+                return 1;
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+
+        function checkPalindrome() {
+            let str = document.getElementById('palindrome-input').value;
+            if (isPalindrome(str)) {
+                document.getElementById('palindrome-result').innerHTML = `${str} - палиндром.`;
+            } else {
+                document.getElementById('palindrome-result').innerHTML = `${str} - не палиндром.`;
+            }
+        }
+
+        function isPalindrome(str) {
+            str = str.toLowerCase().replace(/[^a-zA-Z0-9]/g, "");
+            return str === str.split("").reverse().join("");
+        }
+
+        function findPrimes() {
+            let n = parseInt(document.getElementById('prime-input').value);
+            if (isNaN(n) || n < 2) {
+                document.getElementById('prime-result').innerHTML = "Введите корректное число больше 1.";
+                return;
+            }
+            let primes = [];
+            for (let i = 2; i <= n; i++) {
+                if (isPrime(i)) {
+                    primes.push(i);
+                }
+            }
+            document.getElementById('prime-result').innerHTML = "Простые числа до " + n + ": " + primes.join(", ");
+        }
+
+        function isPrime(num) {
+            if (num <= 1) return false;
+            if (num <= 3) return true;
+            if (num % 2 === 0 || num % 3 === 0) return false;
+            for (let i = 5; i * i <= num; i += 6) {
+                if (num % i === 0 || num % (i + 2) === 0) return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

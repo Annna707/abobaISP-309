@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Практическая работа</title>
+    <style>
+        .calculator {
+            margin: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .email-filter {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h3>Калькулятор</h3>
+        <input type="number" id="num1">
+        <select id="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="number" id="num2">
+        <button onclick="calculate()">Вычислить</button>
+        <p id="result"></p>
+    </div>
+
+    <div>
+        <h3>Проверка на палиндром</h3>
+        <input type="text" id="surname">
+        <button onclick="checkPalindrome()">Проверить</button>
+        <p id="palindromeResult"></p>
+    </div>
+
+    <div>
+        <h3>Среднее значение массива</h3>
+        <p id="arrayAvg"></p>
+    </div>
+
+    <div>
+        <h3>Дней до Нового года</h3>
+        <p id="newYear"></p>
+    </div>
+
+    <div>
+        <h3>Операции с массивом</h3>
+        <p id="arrayOperations"></p>
+    </div>
+
+    <div class="email-filter">
+        <h3>Фильтр email</h3>
+        <input type="text" id="emailFilter" onkeyup="filterEmails()">
+        <ul id="emailList"></ul>
+    </div>
+
+    <script>
+        const calculate = () => {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
+            
+            const operations = {
+                '+': (a, b) => a + b,
+                '-': (a, b) => a - b,
+                '*': (a, b) => a * b,
+                '/': (a, b) => a / b
+            };
+            
+            document.getElementById('result').textContent = operations[operator](num1, num2);
+        };
+
+        const testConditions = function(value) {
+            return {
+                isNumber: typeof value === 'number',
+                isPositive: value > 0,
+                isInteger: Number.isInteger(value)
+            };
+        };
+
+        const checkPalindrome = () => {
+            const surname = document.getElementById('surname').value;
+            const isPalindrome = surname.toLowerCase() === 
+                surname.toLowerCase().split('').reverse().join('');
+            document.getElementById('palindromeResult').textContent = 
+                isPalindrome ? 'Это палиндром!' : 'Это не палиндром';
+        };
+
+        const calculateAverage = (arr) => arr.reduce((a, b) => a + b) / arr.length;
+        const testArray = [1, 2, 3, 4, 5];
+        document.getElementById('arrayAvg').textContent = 
+            `Среднее значение массива [${testArray}]: ${calculateAverage(testArray)}`;
+
+        const daysUntilNewYear = () => {
+            const today = new Date();
+            const newYear = new Date(today.getFullYear() + 1, 0, 1);
+            return Math.ceil((newYear - today) / (1000 * 60 * 60 * 24));
+        };
+        document.getElementById('newYear').textContent = 
+            `Дней до Нового года: ${daysUntilNewYear()}`;
+
+        const emptyFunction = () => undefined;
+
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const sum = (arr) => arr.reduce((a, b) => a + b);
+        const getEven = (arr) => arr.filter(num => num % 2 === 0);
+        const multiplyByTwo = (arr) => arr.map(num => num * 2);
+
+        document.getElementById('arrayOperations').innerHTML = 
+            `Сумма: ${sum(numbers)}<br>
+            Четные числа: ${getEven(numbers)}<br>
+            Умножение на 2: ${multiplyByTwo(numbers)}`;
+
+        const emails = [
+            'test@gmail.com',
+            'user@yahoo.com',
+            'admin@mail.ru',
+            'info@gmail.com',
+            'contact@outlook.com'
+        ];
+
+        const filterEmails = () => {
+            const filterText = document.getElementById('emailFilter').value.toLowerCase();
+            const filteredEmails = emails.filter(email => 
+                email.toLowerCase().includes(filterText));
+            
+            const emailList = document.getElementById('emailList');
+            emailList.innerHTML = '';
+            filteredEmails.forEach(email => {
+                const li = document.createElement('li');
+                li.textContent = email;
+                emailList.appendChild(li);
+            });
+        };
+
+        filterEmails();
+    </script>
+</body>
+</html>

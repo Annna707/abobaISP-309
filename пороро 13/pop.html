@@ -1,0 +1,117 @@
+<script>
+
+// 1. Создание объектов
+
+const bankClient = {
+  name: "Иван Иванов",
+  accountNumber: "1234567890",
+  address: "ул. Пушкина, 10",
+  status: "VIP"
+};
+
+const clinicWorker = {
+  firstName: "Мария",
+  lastName: "Петрова",
+  speciality: "врач",
+  experience: "5 лет",
+  department: "терапевтическое отделение"
+};
+
+const citizen = {
+  fullName: "Сергей Сидоров",
+  passportNumber: "4567890123",
+  birthdate: "01.01.1980",
+  registration: "г. Москва"
+};
+
+
+
+console.log("Клиент банка:", bankClient);
+console.log("Работник клиники:", clinicWorker);
+console.log("Гражданин РФ:", citizen);
+
+
+// 2. Переписывание if на switch
+
+const number = +prompt('Загадайте цифру до 9', '');
+
+switch (number) {
+  case 1:
+    alert('Вы ввели число 1');
+    break;
+  case 2:
+    alert('Вы ввели число 2');
+    break;
+  case 3:
+    alert('Вы ввели число 3');
+    break;
+  case 4:
+    alert('Вы ввели число 4');
+    break;
+  case 5:
+    alert('Вы ввели число 5');
+    break;
+  case 6:
+    alert('Вы ввели число 6');
+    break;
+  case 7:
+    alert('Вы ввели число 7');
+    break;
+  case 8:
+  case 9:
+    alert('Вы ввели число 8, а может и 9');
+    break;
+  default:
+    alert('Вы ввели число вне диапазона 1-9');
+}
+
+
+// 3. Определение четверти часа
+
+const min = 37; 
+
+let quarter;
+
+switch (true) {
+  case (min >= 0 && min <= 14):
+    quarter = "Первая четверть часа";
+    break;
+  case (min >= 15 && min <= 29):
+    quarter = "Вторая четверть часа";
+    break;
+  case (min >= 30 && min <= 44):
+    quarter = "Третья четверть часа";
+    break;
+  case (min >= 45 && min <= 59):
+    quarter = "Четвертая четверть часа";
+    break;
+  default:
+    quarter = "Некорректное значение минут";
+}
+
+console.log(quarter);
+
+
+// 4. Проверка первого символа строки и наличие номера телефона
+
+const str = "31234567890"; 
+const phoneNumber = "89123456789"; 
+
+const firstDigit = str.charAt(0);
+
+let message;
+
+switch (true) {
+  case (firstDigit === '1' || firstDigit === '2' || firstDigit === '3'):
+    message = 'Первая цифра 1, 2 или 3';
+    break;
+  default:
+    message = 'нет';
+}
+
+console.log(message);
+
+console.log(str.includes(phoneNumber) ? "Номер телефона найден" : "Номер телефона не найден");
+
+
+</script>

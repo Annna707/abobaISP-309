@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Работа с объектами и строками</title>
+<style>
+body {
+  font-family: sans-serif;
+}
+section {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+h2 {
+  color: #333;
+}
+</style>
+</head>
+<body>
+
+<h1>eshe odna praktika</h1>
+
+<section id="task1">
+  <h2>Задача 1: Палиндром</h2>
+  <input type="text" id="palindromeInput" placeholder="Введите строку">
+  <button onclick="checkPalindrome()">Проверить</button>
+  <p id="palindromeResult"></p>
+</section>
+
+<section id="task2">
+  <h2>Задача 2: Квадраты отрицательных чисел</h2>
+  <button onclick="generateAndProcessArray()">Показать квадраты отрицательных чисел</button>
+  <p id="task2-result">Результат будет отображен здесь.</p>
+</section>
+
+<section id="task3">
+  <h2>Задача 3: Класс пользователя</h2>
+  <p id="task3-result">Результат будет отображен здесь.</p>
+</section>
+
+<section id="task4">
+  <h2>Задача 4: Класс Студент</h2>
+  <p id="task4-result">Результат будет отображен здесь.</p>
+</section>
+
+<section id="task5">
+  <h2>Задача 5: Переворачивание имени</h2>
+  <input type="text" id="nameInput" placeholder="Введите имя">
+  <button onclick="reverseName()">Перевернуть</button>
+  <p id="nameResult"></p>
+</section>
+
+<script>
+
+function isPalindrome(str) {
+  str = str.toLowerCase().replace(/\s/g, ''); 
+  return str === str.split('').reverse().join('');
+}
+
+
+
+function replaceNegativesWithSquares(arr) {
+  if (arr.length <= 10) {
+    console.error("Длина массива должна быть больше 10.");
+    return;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < 0) {
+      arr[i] = arr[i] * arr[i]; 
+    }
+  }
+  return arr; 
+}
+
+
+
+function generateAndProcessArray() {
+    let myArray = Array.from({length: 15}, () => {
+        if (Math.random() < 0.8) {
+            return Math.floor(Math.random() * 50) * -1;
+        } else {
+            return Math.floor(Math.random() * 11);
+        }
+    });
+
+    let originalArray = [...myArray];
+    let newArray = replaceNegativesWithSquares(myArray);
+    document.getElementById('task2-result').textContent = 
+        'Исходный массив: ' + originalArray.join(', ') + 
+        ' | Изменённый массив: ' + newArray.join(', ');
+}
+
+
+
+class User {
+  constructor(name) {
+    this.name = name;
+  }
+
+  printName() {
+    console.log("Имя пользователя:", this.name);
+  }
+}
+
+let user1 = new User("Иван");
+user1.printName();
+document.getElementById('task3-result').textContent = 
+    'Имя пользователя: ' + user1.name;
+
+
+
+class Student {
+  constructor(firstName, lastName, group, averageGrade) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.group = group;
+    this.averageGrade = averageGrade;
+  }
+
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+
+  getInfo() {
+    return `Студент ${this.getFullName()}, группа ${this.group}, средний балл: ${this.averageGrade}`;
+  }
+}
+
+let student1 = new Student("Иван", "Иванов", "БИ-22", 4.5);
+document.getElementById('task4-result').textContent = student1.getInfo();
+
+
+
+class NameReverser {
+  constructor(name) {
+    this.name = name;
+  }
+
+  reversedName() {
+    return this.name.split('').reverse().join('');
+  }
+}
+
+let reverser = new NameReverser("Иван");
+console.log(reverser.reversedName());
+
+
+function checkPalindrome() {
+    const input = document.getElementById('palindromeInput').value;
+    const result = isPalindrome(input);
+    document.getElementById('palindromeResult').textContent = 
+        result ? 'Это палиндром!' : 'Это не палиндром.';
+}
+
+
+function reverseName() {
+    const input = document.getElementById('nameInput').value;
+    const reverser = new NameReverser(input);
+    document.getElementById('nameResult').textContent = 
+        'Перевернутое имя: ' + reverser.reversedName();
+}
+
+</script>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мемные котики - Главная</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="page">
+    <header class="header">
+        <div class="header__logo">
+            <img src="images/лого.jpg" alt="Логотип" class="header__logo-img">
+        </div>
+        <nav class="header__nav">
+            <ul>
+              <li><a href="#">Главная</a></li>
+              <li><a href="#">Новые мемы</a></li>
+              <li><a href="#">Топ мемы</a></li>
+              <li><a href="#">О сайте</a></li>
+            </ul>
+          </nav>
+          <div class="header__search">
+            <input type="text" placeholder="Поиск мемов...">
+            <button>Искать</button>
+          </div>
+          <button id="registerButton">Регистрация</button>  
+          <div id="registerForm" class="register-form" style="display: none;"> 
+            <h2>Регистрация</h2>
+            <form>
+              <input type="text" placeholder="Имя">
+              <input type="email" placeholder="Email">
+              <input type="password" placeholder="Пароль">
+              <button type="submit">Зарегистрироваться</button>
+            </form>
+          </div>
+    </header>
+
+    <nav class="nav">
+        <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link nav__link--active">Главная</a></li>
+            <li class="nav__item"><a href="gallery.html" class="nav__link">Галерея</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link">О нас</a></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <aside class="sidebar sidebar--left">
+            <div class="sidebar__content">
+                <h3 class="sidebar__title">Категории</h3>
+                <ul class="sidebar__list">
+                    <li class="sidebar__item">Грустные котики</li>
+                    <li class="sidebar__item">Веселые котики</li>
+                    <li class="sidebar__item">Злые котики</li>
+                </ul>
+            </div>
+        </aside>
+
+<section class="content">
+    <div class="content__section">
+        <h2 class="content__title">Грустные котики</h2>
+        <div class="content__grid">
+            <article class="card">
+                <img src="images/1.jpg" alt="Грустный кот 1" class="card__image">
+                <div class="card__content">
+                    <h3 class="card__title">Понедельник</h3>
+                    <p class="card__description">Когда понял, что сегодня не выходной</p>
+                </div>
+            </article>
+            <article class="card">
+                <img src="images/2.jpg" alt="Грустный кот 2" class="card__image">
+                <div class="card__content">
+                    <h3 class="card__title">Пустая миска</h3>
+                    <p class="card__description">Когда закончились вкусняшки</p>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="content__section">
+        <h2 class="content__title">Веселые котики</h2>
+        <div class="content__grid">
+            <article class="card">
+                <img src="images/3.jpg" alt="Веселый кот 1" class="card__image">
+                <div class="card__content">
+                    <h3 class="card__title">Пятница</h3>
+                    <p class="card__description">Когда наконец-то выходные</p>
+                </div>
+            </article>
+            <article class="card">
+                <img src="images/4.jpg" alt="Веселый кот 2" class="card__image">
+                <div class="card__content">
+                    <h3 class="card__title">Вкусняшки</h3>
+                    <p class="card__description">Когда хозяин купил новый корм</p>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <div class="content__section">
+        <h2 class="content__title">Злые котики</h2>
+        <div class="content__grid">
+            <article class="card">
+                <img src="images/5.jpg" alt="Злой кот 1" class="card__image">
+                <div class="card__content">
+                    <h3 class="card__title">Незваные гости</h3>
+                    <p class="card__description">Когда пришли гости без предупреждения</p>
+                </div>
+            </article>
+            <article class="card">
+                <img src="images/6.jpg" alt="Злой кот 2" class="card__image">
+                <div class="card__content">
+                    <h3 class="card__title">Водные процедуры</h3>
+                    <p class="card__description">Когда хозяин решил помыть кота</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+        <aside class="sidebar sidebar--right">
+            <div class="sidebar__content">
+                <h3 class="sidebar__title">Популярные теги</h3>
+                <div class="tags">
+                    <span class="tags__item">#котики</span>
+                    <span class="tags__item">#мемы</span>
+                    <span class="tags__item">#смешно</span>
+                    <span class="tags__item">#пушистики</span>
+                    <span class="tags__item">#милота</span>
+                    <span class="tags__item">#котжизнь</span>
+                    <span class="tags__item">#мурмур</span>
+                    <span class="tags__item">#котомемы</span>
+                    <span class="tags__item">#юмор</span>
+                </div>
+
+                <div class="sidebar__section">
+                    <h3 class="sidebar__title">Статистика</h3>
+                    <ul class="sidebar__stats">
+                        <li class="sidebar__stats-item">Мемов на сайте: 142</li>
+                        <li class="sidebar__stats-item">Просмотров: 15,420</li>
+                        <li class="sidebar__stats-item">Комментариев: 892</li>
+                    </ul>
+                </div>
+
+                <div class="sidebar__section">
+                    <h3 class="sidebar__title">Топ авторов</h3>
+                    <ul class="sidebar__authors">
+                        <li class="sidebar__author">
+                            <span class="sidebar__author-name">Абоба</span>
+                            <span class="sidebar__author-posts">45 мемов</span>
+                        </li>
+                        <li class="sidebar__author">
+                            <span class="sidebar__author-name">MarkPRO</span>
+                            <span class="sidebar__author-posts">32 мема</span>
+                        </li>
+                        <li class="sidebar__author">
+                            <span class="sidebar__author-name">Квадробер№1</span>
+                            <span class="sidebar__author-posts">28 мемов</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="footer">
+        <p class="footer__text">© 2024 Мемные котики. Все права защищены</p>
+        <div class="footer__social">
+            <a href="#" class="footer__social-link">VK</a>
+            <a href="#" class="footer__social-link">Telegram</a>
+        </div>
+    </footer>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

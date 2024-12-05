@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практические задания</title>
+</head>
+<body>
+    <h1>Практические задания</h1>
+
+    <div class="task-container">
+        <h2>1. Случайный массив</h2>
+        <button onclick="generateAndCalculateAverage()">Сгенерировать массив</button>
+        <div id="task1-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2>2. Замена отрицательных чисел</h2>
+        <input type="number" id="array-size" placeholder="Размер массива (>10)" min="11">
+        <button onclick="replaceNegatives()">Обработать массив</button>
+        <div id="task2-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2>3. Статистика массива</h2>
+        <button onclick="calculateArrayStats()">Рассчитать статистику</button>
+        <div id="task3-result" class="result"></div>
+    </div>
+
+    <div class="task-container">
+        <h2>4. Симулятор цветов</h2>
+        <button onclick="runColorSimulation()">Запустить симуляцию</button>
+        <div id="task4-result" class="result"></div>
+    </div>
+
+    <section id="task2">
+        <h2>Задача 2: Информация о покупателе</h2>
+        <p id="task2-result-info">Результат будет отображен здесь.</p>
+    </section>
+
+    <section id="task3">
+        <h2>Задача 3: Пользователи, заказы, рестораны</h2>
+        <div id="task3-result-info"></div>
+    </section>
+
+    <section id="task4">
+        <h2>Задача 4: Функция-конструктор для имён</h2>
+        <p id="task4-result-info">Результат будет отображен здесь.</p>
+    </section>
+
+    <section id="task5">
+        <h2>Задача 5: Объект Студент</h2>
+        <p id="task5-result-info">Результат будет отображен здесь.</p>
+    </section>
+
+    <script>
+        // Задание 1: Массив из 15 случайных чисел
+        function generateAndCalculateAverage() {
+            let arr = [];
+            for(let i = 0; i < 15; i++) {
+                arr.push(Math.floor(Math.random() * 41) - 10);
+            }
+            
+            let sum = 0;
+            let count = 0;
+            for(let num of arr) {
+                if(num > 0) {
+                    sum += num;
+                    count++;
+                }
+            }
+            
+            let average = count > 0 ? sum / count : 0;
+            document.getElementById('task1-result').innerHTML = 
+                `Массив: [${arr.join(', ')}]<br>
+                 Среднее арифметическое положительных элементов: ${average.toFixed(2)}`;
+        }
+
+        // Задание 2: Замена отрицательных элементов
+        function replaceNegatives() {
+            let n = parseInt(document.getElementById('array-size').value) || 15;
+            if(n <= 10) {
+                document.getElementById('task2-result').innerHTML = "Размер массива должен быть больше 10";
+                return;
+            }
+            
+            let arr = [];
+            for(let i = 0; i < n; i++) {
+                arr.push(Math.floor(Math.random() * 41) - 10);
+            }
+            
+            let originalArr = [...arr];
+            
+            for(let i = 0; i < arr.length; i++) {
+                if(arr[i] < 0) {
+                    arr[i] = arr[i] * arr[i];
+                }
+            }
+            
+            document.getElementById('task2-result').innerHTML = 
+                `Исходный массив: [${originalArr.join(', ')}]<br>
+                 Массив после замены: [${arr.join(', ')}]`;
+        }
+
+        // Задание 3: Статистика массива
+        function calculateArrayStats() {
+            let arr = [];
+            for(let i = 0; i < 15; i++) {
+                arr.push(Math.floor(Math.random() * 41) - 10);
+            }
+            
+            let posSum = 0, posCount = 0;
+            let negSum = 0, negCount = 0;
+            let zeroCount = 0;
+            
+            for(let num of arr) {
+                if(num > 0) {
+                    posSum += num;
+                    posCount++;
+                } else if(num < 0) {
+                    negSum += num;
+                    negCount++;
+                } else {
+                    zeroCount++;
+                }
+            }
+            
+            let posAvg = posCount > 0 ? posSum / posCount : 0;
+            let negAvg = negCount > 0 ? negSum / negCount : 0;
+            
+            document.getElementById('task3-result').innerHTML = 
+                `Массив: [${arr.join(', ')}]<br>
+                 Среднее арифметическое положительных чисел: ${posAvg.toFixed(2)}<br>
+                 Среднее арифметическое отрицательных чисел: ${negAvg.toFixed(2)}<br>
+                 Количество нулей: ${zeroCount}`;
+        }
+
+        // Задание 4: Симулятор цветов
+        function runColorSimulation() {
+            let colors = [0, 0, 0];
+            let maxRed = 0;
+            let currentRed = 0;
+            
+            for(let i = 0; i < 1000000; i++) {
+                let color = Math.floor(Math.random() * 3);
+                colors[color]++;
+                
+                if(color === 0) {
+                    currentRed++;
+                    if(currentRed > maxRed) {
+                        maxRed = currentRed;
+                    }
+                } else {
+                    currentRed = 0;
+                }
+            }
+            
+            document.getElementById('task4-result').innerHTML = 
+                `Результаты симуляции:<br>
+                 Красный (0): ${colors[0]} раз<br>
+                 Черный (1): ${colors[1]} раз<br>
+                 Белый (2): ${colors[2]} раз<br>
+                 Максимальное число красных подряд: ${maxRed}`;
+        }
+
+        // Задача 2: Информация о покупателе
+        const buyer = {
+            firstName: "Иван",
+            lastName: "Иванов",
+            address: "ул. Ленина, 15",
+            phoneNumber: "+7-912-345-67-89",
+            email: "ivan.ivanov@example.com",
+            purchaseDate: new Date()
+        };
+
+        document.getElementById("task2-result-info").textContent = 
+            `${buyer.firstName} ${buyer.lastName}, ${buyer.phoneNumber}, ${buyer.email}`;
+
+        // Задача 3: Пользователи, заказы, рестораны
+        const users = [
+            { id: 1, name: "Петр", location: "Москва" },
+            { id: 2, name: "Мария", location: "Санкт-Петербург" }
+        ];
+
+        const orders = [
+            { id: 1, userId: 1, restaurantId: 1, items: ["пицца", "cola"] },
+            { id: 2, userId: 2, restaurantId: 2, items: ["бургер", "фри"] }
+        ];
+
+        const restaurants = [
+            { id: 1, name: "Pizza Hut", location: "Москва" },
+            { id: 2, name: "Burger King", location: "Санкт-Петербург" }
+        ];
+
+        const userOrders = orders.filter(order => order.userId === 1);
+        let orderInfo = "";
+        userOrders.forEach(order => {
+            const restaurant = restaurants.find(rest => rest.id === order.restaurantId);
+            orderInfo += `Пользователь ${users.find(user => user.id === order.userId).name} 
+                         заказал в ${restaurant.name}: ${order.items.join(', ')}<br>`;
+        });
+        document.getElementById("task3-result-info").innerHTML = orderInfo;
+
+        // Задача 4: Функция-конструктор для имён
+        function User(name) {
+            this.name = name;
+            this.isAdmin = false;
+        }
+
+        const groupMembers = [
+            new User("Вася"),
+            new User("Петя"),
+            new User("Маша")
+        ];
+
+        let memberNames = groupMembers.map(member => `${member.name} (Admin: ${member.isAdmin})`).join(", ");
+        document.getElementById("task4-result-info").textContent = memberNames;
+
+        // Задача 5: Объект Студент
+        function Student(name) {
+            this.name = name;
+            this.sayHi = function() {
+                return `Меня зовут: ${this.name}`;
+            };
+        }
+
+        let vasya = new Student("Пупок");
+        document.getElementById("task5-result-info").textContent = vasya.sayHi();
+    </script>
+</body>
+</html>
+    </script>
+</body>
+</html>
+
